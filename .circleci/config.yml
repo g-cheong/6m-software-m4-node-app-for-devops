@@ -60,7 +60,7 @@ workflows:
           branches:
             only: 
               - main
-              - release
+              - /^release\/.*/
       - test:
           requires:
             - build
@@ -68,14 +68,14 @@ workflows:
             branches:
               only:
                 - main
-                - release
+                - /^release\/.*/
       - publish:
           requires:
             - test
           filters:
             branches:
              only:
-              - release
+              - /^release\/.*/
       # - deploy:
       #     requires:
       #       - publish
